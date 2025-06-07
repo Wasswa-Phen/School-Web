@@ -1,0 +1,3414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="T&T Junior School - Where your child's future shines with pride, passion, and success. Premier education in Nakawuka Road, Kasenge, Uganda.">
+    <meta name="keywords"
+        content="T&T Junior School, Uganda education, primary school, Kasenge school, quality education">
+    <meta name="author" content="T&T Junior School">
+    <meta property="og:title" content="T&T Junior School - Excellence in Education">
+    <meta property="og:description" content="Where your child's future shines with pride, passion, and success">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tandtjuniorschool.com">
+
+    <title>T&T Junior School - Excellence in Education</title>
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+    <link rel="manifest" href="/assets/images/site.webmanifest">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2e3192">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        /* ===== CSS RESET & BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== PAGE LOADER ===== */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader-content {
+            text-align: center;
+            color: white;
+        }
+
+        .school-logo {
+            margin-bottom: 30px;
+        }
+
+        .school-logo img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            animation: logoFloat 2s ease-in-out infinite;
+        }
+
+        .loader-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            animation: spin 1.5s linear infinite;
+            margin: 20px auto;
+        }
+
+        .loader-content p {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-top: 10px;
+            animation: fadeInOut 2s ease-in-out infinite;
+        }
+
+        @keyframes logoFloat {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes fadeInOut {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        /* ===== NAVIGATION ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            transition: all 0.3s ease;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            color: #2e3192;
+            z-index: 1002;
+            transition: all 0.3s ease;
+        }
+
+        .nav-logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        /* Hide logo and desktop nav when mobile menu is active */
+        .nav-menu.active~.nav-container .nav-logo {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .nav-menu.active~.nav-container .nav-desktop {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .nav-menu.active~.nav-container .nav-toggle {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* Desktop Navigation */
+        .nav-desktop {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-list-desktop {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-list-desktop .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-list-desktop .nav-link:hover {
+            color: #2e3192;
+        }
+
+        .nav-list-desktop .nav-link::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #fdb82c;
+            transition: width 0.3s ease;
+        }
+
+        .nav-list-desktop .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-social-desktop {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            padding-left: 1rem;
+            border-left: 1px solid #e0e0e0;
+        }
+
+        .nav-social-desktop a {
+            color: #666;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: transparent;
+        }
+
+        .nav-social-desktop a:hover {
+            color: white;
+            background: #2e3192;
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Navigation Menu */
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            display: flex;
+            flex-direction: column;
+            transition: right 0.3s ease;
+            z-index: 1001;
+        }
+
+        .nav-menu.active {
+            right: 0;
+        }
+
+        .nav-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-menu-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            font-weight: 600;
+            margin: 10px;
+        }
+
+        .nav-menu-logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: white;
+            padding: 2px;
+        }
+
+        .nav-close {
+            display: none;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            color: white;
+            transition: all 0.3s ease;
+            position: fixed;
+            top: 1rem;
+            right: 2rem;
+            z-index: 1003;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-close:hover {
+            color: #fdb82c;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .close-text {
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        /* Show close button when menu is active */
+        .nav-menu.active~.nav-container .nav-close {
+            display: flex;
+        }
+
+        .nav-menu-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .nav-list {
+            display: flex;
+            flex-direction: column;
+            list-style: none;
+            gap: 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 0;
+        }
+
+        .nav-list .nav-link {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .nav-list .nav-link:hover {
+            color: #fdb82c;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-social {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .nav-social a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-social a:hover {
+            color: #fdb82c;
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        /* Mobile Toggle Button */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            gap: 4px;
+            z-index: 1002;
+            transition: all 0.3s ease;
+        }
+
+        .menu-text {
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #333;
+            letter-spacing: 1px;
+            margin-bottom: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            scale: 1.8;
+        }
+
+        .hamburger span {
+            width: 18px;
+            height: 1px;
+            background: #3b3b3b;
+            transition: all 0.3s ease;
+
+        }
+
+        /* Hamburger animation */
+        /* .nav-toggle.active .hamburger span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .nav-toggle.active .hamburger span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.active .hamburger span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        .nav-toggle.active .menu-text {
+            color: #2e3192;
+        } */
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.8), rgba(59, 130, 246, 0.6));
+            z-index: 1;
+        }
+
+        .hero-slider {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .highlight {
+            color: #fdb82c;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .hero-slide-info {
+            position: absolute;
+            bottom: 120px;
+            left: 0;
+            right: 0;
+            z-index: 3;
+            top: 500px;
+        }
+
+        .slide-content-wrapper {
+            position: relative;
+            min-height: 100px;
+        }
+
+        .slide-content {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(30, 64, 175, 0.95);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            opacity: 0;
+            transition: all 0.8s ease;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .slide-content.active {
+            opacity: 1;
+        }
+
+        .slide-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: white;
+            font-weight: 600;
+        }
+
+        .slide-content p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            opacity: 0.95;
+        }
+
+        .slider-controls {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 2rem;
+            z-index: 2;
+        }
+
+        .slider-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .slider-btn:hover {
+            background: rgba(253, 184, 44, 0.8);
+            border-color: #fdb82c;
+            transform: scale(1.1);
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+            z-index: 2;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active,
+        .dot:hover {
+            background: #fdb82c;
+            transform: scale(1.2);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            text-align: center;
+            animation: bounce 2s infinite;
+            z-index: 2;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: #fdb82c;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #e6a429;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(253, 184, 44, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #2e3192;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        /* ===== METRICS BAR ===== */
+        .metrics-bar {
+            background: #2e3192;
+            color: white;
+            padding: 3rem 0;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .metric-item {
+            padding: 1rem;
+        }
+
+        .metric-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #fdb82c;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* ===== SECTION HEADERS ===== */
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: #2e3192;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ===== ACADEMIC PILLARS ===== */
+        .academic-pillars {
+            padding: 5rem 0;
+            background: #f8f9fa;
+        }
+
+        .pillars-carousel {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            background: white;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .pillar-slide {
+            display: none;
+            padding: 3rem;
+            text-align: center;
+            min-height: 300px;
+        }
+
+        .pillar-slide.active {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+
+        .pillar-icon {
+            font-size: 4rem;
+            color: #fdb82c;
+            margin-bottom: 1.5rem;
+        }
+
+        .pillar-content h3 {
+            font-size: 2rem;
+            color: #2e3192;
+            margin-bottom: 1rem;
+        }
+
+        .pillar-content p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .carousel-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: #2e3192;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-btn:hover {
+            background: #fdb82c;
+            transform: scale(1.1);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* ===== HEADTEACHER WELCOME ===== */
+        .headteacher-welcome {
+            padding: 5rem 0;
+        }
+
+        .welcome-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .welcome-image {
+            position: relative;
+        }
+
+        .welcome-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .welcome-badge {
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fdb82c;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+
+        .welcome-content h2 {
+            font-size: 2.5rem;
+            color: #2e3192;
+            margin-bottom: 0.5rem;
+        }
+
+        .welcome-content h3 {
+            font-size: 1.3rem;
+            color: #fdb82c;
+            margin-bottom: 1.5rem;
+        }
+
+        .welcome-quote {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #666;
+            margin-bottom: 1.5rem;
+            padding-left: 20px;
+            border-left: 4px solid #fdb82c;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            padding: 5rem 0;
+            background: #f8f9fa;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .testimonial-content {
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-content p {
+            font-style: italic;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-author img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+        }
+
+        .testimonial-author h4 {
+            color: #2e3192;
+            margin-bottom: 0.25rem;
+        }
+
+        .testimonial-author span {
+            color: #fdb82c;
+            font-size: 0.9rem;
+        }
+
+        /* ===== NEWS & CALENDAR ===== */
+        .news-calendar {
+            padding: 5rem 0;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .news-image {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .news-date {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #fdb82c;
+            color: white;
+            padding: 0.5rem;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .news-date .day {
+            display: block;
+            font-size: 1.5rem;
+        }
+
+        .news-date .month {
+            display: block;
+            font-size: 0.8rem;
+        }
+
+        .news-content {
+            padding: 1.5rem;
+        }
+
+        .news-content h3 {
+            color: #2e3192;
+            margin-bottom: 1rem;
+        }
+
+        .news-content p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .news-link {
+            color: #fdb82c;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .news-link:hover {
+            color: #e6a429;
+        }
+
+        /* ===== VIRTUAL TOUR ===== */
+        .virtual-tour {
+            padding: 5rem 0;
+            background: #f8f9fa;
+        }
+
+        .tour-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+        }
+
+        .tour-video {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .tour-video video {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 150px;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* ===== ADMISSIONS WIZARD ===== */
+        .admissions-wizard {
+            padding: 5rem 0;
+        }
+
+        .wizard-steps {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .step:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 2px;
+            background: #ddd;
+        }
+
+        .step.active::after {
+            background: #fdb82c;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #ddd;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .step.active .step-number {
+            background: #fdb82c;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: #666;
+            transition: color 0.3s ease;
+        }
+
+        .step.active .step-title {
+            color: #2e3192;
+        }
+
+        .wizard-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .form-step h3 {
+            color: #2e3192;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #fdb82c;
+        }
+
+        .admission-info {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1.5rem;
+        }
+
+        .admission-info h4 {
+            color: #2e3192;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .info-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .info-item i {
+            color: #3b82f6;
+            font-size: 1.2rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .info-item span {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .form-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== VIDEO SPOTLIGHT ===== */
+        .video-spotlight {
+            padding: 5rem 0;
+        }
+
+        .spotlight-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .spotlight-video {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .spotlight-video video {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .spotlight-info h3 {
+            color: #2e3192;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .spotlight-info p {
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .spotlight-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fdb82c;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* ===== NEWSLETTER & SOCIAL ===== */
+        .newsletter-social {
+            padding: 5rem 0;
+            background: #2e3192;
+            color: white;
+        }
+
+        .newsletter-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .newsletter-signup h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-signup p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+        }
+
+        .social-feed h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .social-link i {
+            font-size: 1.5rem;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact {
+            padding: 5rem 0;
+            background: #f8f9fa;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: #fdb82c;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .contact-details h4 {
+            color: #2e3192;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-details p {
+            color: #666;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-map {
+            margin-top: 2rem;
+        }
+
+        .contact-map h4 {
+            color: #2e3192;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .map-container {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 200px;
+            border: none;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: #2e3192;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: #fdb82c;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: white;
+            /* Add white background */
+            padding: 3px;
+            /* Add some padding to make it look better */
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: #fdb82c;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #fdb82c;
+        }
+
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1rem;
+        }
+
+        .footer-bottom-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .credits {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .developer-link {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            color: #fdb82c;
+            transition: all 0.3s ease;
+        }
+
+        .developer-link:hover {
+            transform: scale(1.05);
+        }
+
+        .developer-logo {
+            height: 20px;
+            width: auto;
+            margin: 0 0.25rem;
+            filter: brightness(0) invert(1);
+        }
+
+        .credits i {
+            color: #fdb82c;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        .footer-bottom a {
+            color: #fdb82c;
+            text-decoration: none;
+        }
+
+        /* ===== CHATBOT ===== */
+        .chatbot {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            width: 350px;
+            height: 500px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            display: none;
+            flex-direction: column;
+            z-index: 1000;
+        }
+
+        .chatbot.active {
+            display: flex;
+        }
+
+        .chatbot-header {
+            background: #2e3192;
+            color: white;
+            padding: 1rem;
+            border-radius: 20px 20px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chatbot-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+        }
+
+        .message {
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            border-radius: 15px;
+            max-width: 80%;
+        }
+
+        .bot-message {
+            background: #f0f0f0;
+            margin-right: auto;
+        }
+
+        .user-message {
+            background: #fdb82c;
+            color: white;
+            margin-left: auto;
+        }
+
+        .chatbot-input {
+            padding: 1rem;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            outline: none;
+        }
+
+        .chatbot-input button {
+            background: #fdb82c;
+            border: none;
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .chatbot-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: #fdb82c;
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(253, 184, 44, 0.3);
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .chatbot-toggle:hover {
+            background: #e6a429;
+            transform: scale(1.1);
+        }
+
+        /* ===== BACK TO TOP ===== */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            background: #2e3192;
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: #fdb82c;
+            transform: translateY(-2px);
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1024px) {
+            .nav-desktop {
+                display: none;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .nav-menu-header {
+                display: flex;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .welcome-grid,
+            .tour-content,
+            .spotlight-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .newsletter-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonials-grid,
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .wizard-steps {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .step:not(:last-child)::after {
+                display: none;
+            }
+
+            .spotlight-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .social-links {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .footer-content {
+                text-align: center;
+            }
+
+            .footer-bottom-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .contact-item {
+                justify-content: center;
+                text-align: center;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .chatbot {
+                width: 300px;
+                height: 400px;
+                right: 10px;
+                bottom: 80px;
+            }
+
+            .hero-slide-info {
+                bottom: 80px;
+            }
+
+            .slide-content {
+                max-width: 350px;
+                padding: 1.2rem 1.5rem;
+            }
+
+            .slide-content h3 {
+                font-size: 1.3rem;
+            }
+
+            .slide-content p {
+                font-size: 0.9rem;
+            }
+
+            .slider-controls {
+                padding: 0 1rem;
+            }
+
+            .slider-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero-title {
+                font-size: 1.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .metric-number {
+                font-size: 2rem;
+            }
+
+            .pillar-slide {
+                padding: 2rem 1rem;
+            }
+
+            .wizard-form {
+                padding: 2rem 1rem;
+            }
+
+            .chatbot {
+                width: calc(100vw - 20px);
+                right: 10px;
+                left: 10px;
+            }
+
+            .hero-slide-info {
+                bottom: 60px;
+            }
+
+            .slide-content {
+                max-width: 280px;
+                padding: 1rem;
+            }
+
+            .slide-content h3 {
+                font-size: 1.1rem;
+            }
+
+            .slide-content p {
+                font-size: 0.85rem;
+            }
+
+            .slider-controls {
+                display: none;
+            }
+
+            .credits {
+                font-size: 0.9rem;
+            }
+
+            .developer-logo {
+                height: 18px;
+            }
+        }
+
+        /* ===== UTILITY CLASSES ===== */
+        .text-center {
+            text-align: center;
+        }
+
+        .mb-1 {
+            margin-bottom: 0.5rem;
+        }
+
+        .mb-2 {
+            margin-bottom: 1rem;
+        }
+
+        .mb-3 {
+            margin-bottom: 1.5rem;
+        }
+
+        .mb-4 {
+            margin-bottom: 2rem;
+        }
+
+        .mt-1 {
+            margin-top: 0.5rem;
+        }
+
+        .mt-2 {
+            margin-top: 1rem;
+        }
+
+        .mt-3 {
+            margin-top: 1.5rem;
+        }
+
+        .mt-4 {
+            margin-top: 2rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .visible {
+            display: block;
+        }
+
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #fdb82c;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        *:focus {
+            outline: 2px solid #fdb82c;
+            outline-offset: 2px;
+        }
+
+        @media print {
+
+            .navbar,
+            .chatbot,
+            .chatbot-toggle,
+            .back-to-top {
+                display: none !important;
+            }
+
+            .hero {
+                height: auto;
+                padding: 2rem 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Page Loader -->
+    <div id="pageLoader" class="page-loader">
+        <div class="loader-content">
+            <div class="school-logo">
+                <img src="assets/images/T&T-JUNIOR-SCHOOL-fav.png" alt="T&T Junior School">
+            </div>
+            <div class="loader-spinner"></div>
+            <p>Loading Excellence...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <!-- Mobile Navigation Menu -->
+        <div class="nav-menu" id="navMenu">
+            <div class="nav-menu-logo">
+                <img src="assets/images/T&T-JUNIOR-SCHOOL-Logo.png" alt="T&T Junior School">
+            </div>
+            <div class="nav-menu-content">
+                <ul class="nav-list">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#academics" class="nav-link">Academics</a></li>
+                    <li><a href="#admissions" class="nav-link">Admissions</a></li>
+                    <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                    <li><a href="#news" class="nav-link">News</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="nav-social">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/images/T&T-JUNIOR-SCHOOL-Logo.png" alt="T&T Junior School">
+            </div>
+
+            <!-- Desktop Navigation -->
+            <div class="nav-desktop">
+                <ul class="nav-list-desktop">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#academics" class="nav-link">Academics</a></li>
+                    <li><a href="#admissions" class="nav-link">Admissions</a></li>
+                    <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                    <li><a href="#news" class="nav-link">News</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="nav-social-desktop">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+
+            <!-- Mobile Toggle Button -->
+            <div class="nav-toggle" id="navToggle">
+                <span class="menu-text">MENU</span>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+
+            <!-- Mobile Close Button (appears when menu is open) -->
+            <div class="nav-close" id="navClose">
+                <span class="close-text">CLOSE</span>
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="hero-overlay"></div>
+            <div class="hero-slider">
+                <div class="slide active">
+                    <img src="assets/images/01 (37).jpg" alt="Excellence in Education" loading="eager">
+                </div>
+                <div class="slide">
+                    <img src="assets/images/06.jpg" alt="Modern Facilities" loading="lazy">
+                </div>
+                <div class="slide">
+                    <img src="assets/images/01 (1).jpg" alt="Holistic Development" loading="lazy">
+                </div>
+                <div class="slide">
+                    <img src="assets/images/07.jpg" alt="Student Success" loading="lazy">
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button class="slider-btn prev" onclick="changeHeroSlide(-1)" aria-label="Previous slide">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="slider-btn next" onclick="changeHeroSlide(1)" aria-label="Next slide">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="slider-dots">
+                <span class="dot active" onclick="currentHeroSlide(1)" aria-label="Slide 1"></span>
+                <span class="dot" onclick="currentHeroSlide(2)" aria-label="Slide 2"></span>
+                <span class="dot" onclick="currentHeroSlide(3)" aria-label="Slide 3"></span>
+                <span class="dot" onclick="currentHeroSlide(4)" aria-label="Slide 4"></span>
+            </div>
+        </div>
+        <div class="hero-content">
+            <div class="container">
+                <h1 class="hero-title">
+                    Where Your Child's Future
+                    <span class="highlight">Shines Bright</span>
+                </h1>
+                <div class="hero-cta">
+                    <a href="#admissions" class="btn btn-primary">Apply Now</a>
+                    <a href="#gallery" class="btn btn-secondary">Virtual Tour</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-slide-info">
+            <div class="container">
+                <div class="slide-content-wrapper">
+                    <div class="slide-content active" data-slide="0">
+                        <h3>Excellence in Education</h3>
+                        <p>Nurturing young minds for a brighter tomorrow with innovative teaching methods and dedicated
+                            educators.</p>
+                    </div>
+                    <div class="slide-content" data-slide="1">
+                        <h3>Modern Facilities</h3>
+                        <p>State-of-the-art classrooms, well-equipped laboratories, and safe learning environments for
+                            optimal education.</p>
+                    </div>
+                    <div class="slide-content" data-slide="2">
+                        <h3>Creative Learning</h3>
+                        <p>Building character, creativity, and confidence through holistic educational approaches and
+                            extracurricular activities.</p>
+                    </div>
+                    <div class="slide-content" data-slide="3">
+                        <h3>Student Success</h3>
+                        <p>Celebrating academic achievements and preparing students for future challenges with pride and
+                            excellence.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Discover More</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Metrics Bar -->
+    <section class="metrics-bar">
+        <div class="container">
+            <div class="metrics-grid">
+                <div class="metric-item">
+                    <div class="metric-number" data-target="16">0</div>
+                    <div class="metric-label">Years of Excellence</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-number" data-target="500">0</div>
+                    <div class="metric-label">Happy Students</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-number" data-target="25">0</div>
+                    <div class="metric-label">Qualified Teachers</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-number" data-target="98">0</div>
+                    <div class="metric-label">Success Rate %</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academic Pillars Carousel -->
+    <section id="academics" class="academic-pillars">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Academic Pillars</h2>
+                <p>Building strong foundations for lifelong learning</p>
+            </div>
+            <div class="pillars-carousel">
+                <div class="pillar-slide active">
+                    <div class="pillar-content">
+                        <div class="pillar-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <h3>Literacy Excellence</h3>
+                        <p>Developing strong reading, writing, and communication skills through innovative teaching
+                            methods.</p>
+                    </div>
+                </div>
+                <div class="pillar-slide">
+                    <div class="pillar-content">
+                        <div class="pillar-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <h3>Mathematical Thinking</h3>
+                        <p>Building logical reasoning and problem-solving skills through engaging mathematical concepts.
+                        </p>
+                    </div>
+                </div>
+                <div class="pillar-slide">
+                    <div class="pillar-content">
+                        <div class="pillar-icon">
+                            <i class="fas fa-flask"></i>
+                        </div>
+                        <h3>Scientific Discovery</h3>
+                        <p>Encouraging curiosity and exploration through hands-on science experiments and
+                            investigations.</p>
+                    </div>
+                </div>
+                <div class="pillar-slide">
+                    <div class="pillar-content">
+                        <div class="pillar-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3>Creative Arts</h3>
+                        <p>Fostering creativity and self-expression through music, art, drama, and cultural activities.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-controls">
+                <button class="carousel-btn prev" onclick="changeSlide(-1)" aria-label="Previous pillar">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-btn next" onclick="changeSlide(1)" aria-label="Next pillar">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Welcome from Headteacher -->
+    <section id="about" class="headteacher-welcome">
+        <div class="container">
+            <div class="welcome-grid">
+                <div class="welcome-image">
+                    <img src="assets/images/Director.jpg" alt="Mrs Lutakome Uniah - School Director">
+                    <div class="welcome-badge">
+                        <span>School Director</span>
+                    </div>
+                </div>
+                <div class="welcome-content">
+                    <h2>Welcome to T&T Junior School</h2>
+                    <h3>Mrs. Lutakome Uniah</h3>
+                    <p class="welcome-quote">
+                        "At T&T Junior School, we believe every child has the potential to shine. Our dedicated team of
+                        educators works tirelessly to nurture young minds, instilling values of excellence, integrity,
+                        and compassion."
+                    </p>
+                    <p>
+                        Since our establishment in 2008, we have been committed to providing quality education that
+                        prepares our students for the challenges of tomorrow. We create an environment where learning is
+                        joyful, meaningful, and transformative.
+                    </p>
+                    <a href="#contact" class="btn btn-primary">Schedule a Meeting</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our Community Says</h2>
+                <p>Hear from parents and alumni about their T&T experience</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"T&T Junior School has been instrumental in shaping my daughter's character and academic
+                            foundation. The teachers are exceptional!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="assets/images/01 (17).jpg" alt="Parent">
+                        <div>
+                            <h4>Sarah Nakato</h4>
+                            <span>Parent</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Teaching at T&T Junior School has been incredibly rewarding. The supportive environment
+                            allows us to bring out the best in every child."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="assets/images/01 (21).jpg" alt="Teacher">
+                        <div>
+                            <h4>Ms. Jane Nakamya</h4>
+                            <span>Primary 3 Teacher</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"The holistic approach to education at T&T ensures our children develop both academically and
+                            socially."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="assets/images/01 (58).jpg" alt="Parent">
+                        <div>
+                            <h4>Grace Namuli</h4>
+                            <span>Parent</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News & Calendar -->
+    <section id="news" class="news-calendar">
+        <div class="container">
+            <div class="section-header">
+                <h2>Latest News & Events</h2>
+                <p>Stay updated with school activities and announcements</p>
+            </div>
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="assets/images/Graduation.jpg" alt="Graduation Day">
+                        <div class="news-date">
+                            <span class="day">01</span>
+                            <span class="month">Dec</span>
+                        </div>
+                    </div>
+                    <div class="news-content">
+                        <h3>Pre-Primary Graduation Day</h3>
+                        <p>Join us as we celebrate our pre-primary graduates and their achievements.</p>
+                        <a href="#" class="news-link">Read More</a>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="assets/images/concert.jpg" alt="End of Year Concert">
+                        <div class="news-date">
+                            <span class="day">06</span>
+                            <span class="month">Dec</span>
+                        </div>
+                    </div>
+                    <div class="news-content">
+                        <h3>End of Year Concert</h3>
+                        <p>A spectacular showcase of our students' talents in music, dance, and drama.</p>
+                        <a href="#" class="news-link">Read More</a>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="assets/images/Exams.jpg" alt="Term Exams">
+                        <div class="news-date">
+                            <span class="day">18</span>
+                            <span class="month">Nov</span>
+                        </div>
+                    </div>
+                    <div class="news-content">
+                        <h3>End of Term Examinations</h3>
+                        <p>Final assessments for the term. Wishing all our students the best of luck!</p>
+                        <a href="#" class="news-link">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Virtual Tour & Gallery -->
+    <section id="gallery" class="virtual-tour">
+        <div class="container">
+            <div class="section-header">
+                <h2>Explore Our Campus</h2>
+                <p>Take a virtual tour of our beautiful facilities</p>
+            </div>
+            <div class="tour-content">
+                <div class="tour-main">
+                    <div class="tour-video">
+                        <video controls poster="/placeholder.svg?height=400&width=600">
+                            <source src="assets/images/school.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="assets/images/01 (60).jpg" alt="Classroom">
+                        <div class="gallery-overlay">
+                            <span>Modern Classrooms</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/images/01 (32).jpg" alt="Library">
+                        <div class="gallery-overlay">
+                            <span>Well-Stocked Library</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/images/01 (26).jpg" alt="Playground">
+                        <div class="gallery-overlay">
+                            <span>Safe Playground</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/images/01 (13).jpg" alt="Computer Lab">
+                        <div class="gallery-overlay">
+                            <span>Computer Laboratory</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admissions Wizard -->
+    <section id="admissions" class="admissions-wizard">
+        <div class="container">
+            <div class="section-header">
+                <h2>Admissions & Fees</h2>
+                <p>Start your child's journey with us</p>
+            </div>
+            <div class="wizard-content">
+                <div class="wizard-steps">
+                    <div class="step active" data-step="1">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Application</div>
+                    </div>
+                    <div class="step" data-step="2">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Assessment</div>
+                    </div>
+                    <div class="step" data-step="3">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Enrollment</div>
+                    </div>
+                </div>
+                <div class="wizard-form">
+                    <form id="admissionForm" action="contact.php" method="POST">
+                        <div class="form-step active" data-step="1">
+                            <h3>Student Information</h3>
+                            <div class="form-group">
+                                <input type="text" name="student_name" placeholder="Student's Full Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="date" name="birth_date" required>
+                            </div>
+                            <div class="form-group">
+                                <select name="grade_level" required>
+                                    <option value="">Select Grade Level</option>
+                                    <option value="nursery">Nursery</option>
+                                    <option value="pre-primary">Pre-Primary</option>
+                                    <option value="primary-1">Primary 1</option>
+                                    <option value="primary-2">Primary 2</option>
+                                    <option value="primary-3">Primary 3</option>
+                                    <option value="primary-4">Primary 4</option>
+                                    <option value="primary-5">Primary 5</option>
+                                    <option value="primary-6">Primary 6</option>
+                                    <option value="primary-7">Primary 7</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-step" data-step="2">
+                            <h3>Parent/Guardian Information</h3>
+                            <div class="form-group">
+                                <input type="text" name="parent_name" placeholder="Parent/Guardian Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="parent_email" placeholder="Email Address" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" name="parent_phone" placeholder="Phone Number" required>
+                            </div>
+                        </div>
+                        <div class="form-step" data-step="3">
+                            <h3>Additional Information</h3>
+                            <div class="form-group">
+                                <textarea name="message"
+                                    placeholder="Any additional information or special requirements"></textarea>
+                            </div>
+                            <div class="admission-info">
+                                <h4>Next Steps</h4>
+                                <div class="info-grid">
+                                    <div class="info-item">
+                                        <i class="fas fa-calendar"></i>
+                                        <span>Schedule a visit to our campus</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fas fa-phone"></i>
+                                        <span>Call us for fee information</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fas fa-envelope"></i>
+                                        <span>Receive admission updates</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-secondary prev-btn"
+                                onclick="prevStep()">Previous</button>
+                            <button type="button" class="btn btn-primary next-btn" onclick="nextStep()">Next</button>
+                            <button type="submit" class="btn btn-primary submit-btn" style="display: none;">Submit
+                                Application</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Spotlight -->
+    <section class="video-spotlight">
+        <div class="container">
+            <div class="section-header">
+                <h2>School Concert Highlights</h2>
+                <p>Experience the talent and creativity of our students</p>
+            </div>
+            <div class="spotlight-content">
+                <div class="spotlight-video">
+                    <video controls poster="/placeholder.svg?height=400&width=700">
+                        <source src="assets/images/concert.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="spotlight-info">
+                    <h3>T&T Junior School Concert 2023</h3>
+                    <p>Our annual concert showcases the incredible talents of our students across various disciplines
+                        including music, dance, drama, and poetry. This year's theme "Dreams Take Flight" inspired
+                        performances that left audiences amazed.</p>
+                    <div class="spotlight-stats">
+                        <div class="stat">
+                            <span class="stat-number">150+</span>
+                            <span class="stat-label">Performers</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">12</span>
+                            <span class="stat-label">Performances</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Audience</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter & Social Feed -->
+    <section class="newsletter-social">
+        <div class="container">
+            <div class="newsletter-content">
+                <div class="newsletter-signup">
+                    <h3>Stay Connected</h3>
+                    <p>Subscribe to our newsletter for updates and announcements</p>
+                    <form class="newsletter-form" action="contact.php" method="POST">
+                        <input type="email" name="newsletter_email" placeholder="Enter your email" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+                <div class="social-feed">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link facebook">
+                            <i class="fab fa-facebook-f"></i>
+                            <span>Facebook</span>
+                        </a>
+                        <a href="#" class="social-link twitter">
+                            <i class="fab fa-x-twitter"></i>
+                            <span>Twitter</span>
+                        </a>
+                        <a href="#" class="social-link instagram">
+                            <i class="fab fa-instagram"></i>
+                            <span>Instagram</span>
+                        </a>
+                        <a href="#" class="social-link youtube">
+                            <i class="fab fa-youtube"></i>
+                            <span>YouTube</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Get In Touch</h2>
+                <p>We'd love to hear from you</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Address</h4>
+                            <p>Nakawuka Road, Kasenge, Uganda</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Phone</h4>
+                            <p>+256 752 783883<br>+256 754 909194</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p>info@tandtjuniorschools.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-map">
+                        <h4>Find Us</h4>
+                        <div class="map-container">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.778375723025!2d32.5052401!3d0.2563838!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177da31913942d03%3A0xc3590c48c3055f69!2sT%20and%20T%20JUNIOR%20SCHOOL%20KASENGE!5e0!3m2!1sen!2sug!4v1749299708428!5m2!1sen!2sug"
+                                width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form action="contact.php" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="subject" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="assets/images/T&T-JUNIOR-SCHOOL-Logo.png" alt="T&T Junior School">
+                        <h3>T&T Junior School</h3>
+                    </div>
+                    <p>Nurturing excellence through pride, passion, and success since 2008.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#academics">Academics</a></li>
+                        <li><a href="#admissions">Admissions</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#news">News</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Programs</h4>
+                    <ul>
+                        <li><a href="#">Nursery</a></li>
+                        <li><a href="#">Pre-Primary</a></li>
+                        <li><a href="#">Primary School</a></li>
+                        <li><a href="#">Extra-Curricular</a></li>
+                        <li><a href="#">Special Programs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-map-marker-alt"></i> Nakawuka Road, Kasenge, Uganda</p>
+                        <p><i class="fas fa-phone"></i> +256 752 783883</p>
+                        <p><i class="fas fa-envelope"></i> info@tandtjuniorschools.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; <span id="currentYear"></span> T&T Junior School. All rights reserved.</p>
+                    <p class="credits">
+                        <i class="fas fa-bolt" aria-hidden="true"></i>
+                        Powered by
+                        <a href="https://aromaxtechnologies.com" target="_blank" rel="noopener noreferrer"
+                            class="developer-link">
+                            <img src="https://assets.aromaxtechnologies.com/images/Aromax-tshirt%20%28White%29.png"
+                                alt="Aromax Technologies" class="developer-logo" />
+                        </a> Technologies
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <div class="chatbot" id="chatbot">
+        <div class="chatbot-header">
+            <h4>T&T Assistant</h4>
+            <button class="chatbot-close" onclick="toggleChatbot()" aria-label="Close chatbot">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="message bot-message">
+                <p>Hello! How can I help you today?</p>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatbotInput" placeholder="Type your message..." aria-label="Chat message">
+            <button onclick="sendMessage()" aria-label="Send message">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Chatbot Toggle Button -->
+    <button class="chatbot-toggle" onclick="toggleChatbot()" aria-label="Open chatbot">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // ===== GLOBAL VARIABLES =====
+        let currentHeroSlideIndex = 0;
+        let currentPillarSlide = 0;
+        let currentAdmissionStep = 1;
+        let heroSliderInterval;
+
+        // ===== PAGE LOADER =====
+        window.addEventListener("load", () => {
+            const loader = document.getElementById("pageLoader");
+            setTimeout(() => {
+                loader.style.opacity = "0";
+                setTimeout(() => {
+                    loader.style.display = "none";
+                }, 500);
+            }, 1500);
+        });
+
+        // ===== NAVIGATION =====
+        const navToggle = document.getElementById("navToggle");
+        const navMenu = document.getElementById("navMenu");
+        const navClose = document.getElementById("navClose");
+        const navLinks = document.querySelectorAll(".nav-link");
+        const navbar = document.getElementById("navbar");
+
+        // Enhanced mobile navigation with proper state management
+        function toggleMobileMenu() {
+            const isActive = navMenu.classList.contains("active");
+
+            if (isActive) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
+        }
+
+        function openMobileMenu() {
+            navMenu.classList.add("active");
+            navToggle.classList.add("active");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeMobileMenu() {
+            navMenu.classList.remove("active");
+            navToggle.classList.remove("active");
+            document.body.style.overflow = "auto";
+        }
+
+        // Event listeners
+        navToggle.addEventListener("click", toggleMobileMenu);
+        navClose.addEventListener("click", closeMobileMenu);
+
+        // Close menu when clicking on nav links
+        navLinks.forEach((link) => {
+            link.addEventListener("click", closeMobileMenu);
+        });
+
+        // Navbar scroll effect
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 100) {
+                navbar.style.background = "rgba(255, 255, 255, 0.98)";
+                navbar.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.15)";
+            } else {
+                navbar.style.background = "rgba(255, 255, 255, 0.95)";
+                navbar.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.1)";
+            }
+        });
+
+        // ===== SMOOTH SCROLLING =====
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener("click", function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute("href"));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                    });
+                }
+            });
+        });
+
+        // ===== HERO SLIDER =====
+        const heroSlides = document.querySelectorAll(".slide");
+        const heroDots = document.querySelectorAll(".dot");
+        const slideContents = document.querySelectorAll(".slide-content");
+        const totalHeroSlides = heroSlides.length;
+
+        function showHeroSlide(index) {
+            // Hide all slides, dots, and content
+            heroSlides.forEach((slide) => slide.classList.remove("active"));
+            heroDots.forEach((dot) => dot.classList.remove("active"));
+            slideContents.forEach((content) => content.classList.remove("active"));
+
+            // Show current slide, dot, and content
+            heroSlides[index].classList.add("active");
+            heroDots[index].classList.add("active");
+            slideContents[index].classList.add("active");
+        }
+
+        function nextHeroSlide() {
+            currentHeroSlideIndex = (currentHeroSlideIndex + 1) % totalHeroSlides;
+            showHeroSlide(currentHeroSlideIndex);
+        }
+
+        function prevHeroSlide() {
+            currentHeroSlideIndex = (currentHeroSlideIndex - 1 + totalHeroSlides) % totalHeroSlides;
+            showHeroSlide(currentHeroSlideIndex);
+        }
+
+        function changeHeroSlide(direction) {
+            if (direction === 1) {
+                nextHeroSlide();
+            } else {
+                prevHeroSlide();
+            }
+        }
+
+        function currentHeroSlide(index) {
+            currentHeroSlideIndex = index - 1;
+            showHeroSlide(currentHeroSlideIndex);
+        }
+
+        // Auto-advance hero slider
+        function startHeroSlider() {
+            heroSliderInterval = setInterval(nextHeroSlide, 5000);
+        }
+
+        function stopHeroSlider() {
+            clearInterval(heroSliderInterval);
+        }
+
+        // Pause auto-advance on hover
+        const heroSection = document.querySelector(".hero");
+        heroSection.addEventListener("mouseenter", stopHeroSlider);
+        heroSection.addEventListener("mouseleave", startHeroSlider);
+
+        // Touch/swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        heroSection.addEventListener("touchstart", (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        heroSection.addEventListener("touchend", (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    nextHeroSlide();
+                } else {
+                    prevHeroSlide();
+                }
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "ArrowLeft") {
+                prevHeroSlide();
+            } else if (e.key === "ArrowRight") {
+                nextHeroSlide();
+            }
+        });
+
+        // ===== METRICS COUNTER ANIMATION =====
+        function animateCounters() {
+            const counters = document.querySelectorAll(".metric-number");
+
+            counters.forEach((counter) => {
+                const target = parseInt(counter.getAttribute("data-target"));
+                const increment = target / 100;
+                let current = 0;
+
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        counter.textContent = Math.ceil(current);
+                        setTimeout(updateCounter, 20);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+
+                updateCounter();
+            });
+        }
+
+        // ===== ACADEMIC PILLARS CAROUSEL =====
+        const pillarSlides = document.querySelectorAll(".pillar-slide");
+        const totalPillarSlides = pillarSlides.length;
+
+        function showPillarSlide(index) {
+            pillarSlides.forEach((slide) => slide.classList.remove("active"));
+            pillarSlides[index].classList.add("active");
+        }
+
+        function nextPillarSlide() {
+            currentPillarSlide = (currentPillarSlide + 1) % totalPillarSlides;
+            showPillarSlide(currentPillarSlide);
+        }
+
+        function prevPillarSlide() {
+            currentPillarSlide = (currentPillarSlide - 1 + totalPillarSlides) % totalPillarSlides;
+            showPillarSlide(currentPillarSlide);
+        }
+
+        function changeSlide(direction) {
+            if (direction === 1) {
+                nextPillarSlide();
+            } else {
+                prevPillarSlide();
+            }
+        }
+
+        // Auto-advance pillars carousel
+        setInterval(nextPillarSlide, 5000);
+
+        // ===== ADMISSIONS WIZARD =====
+        const totalSteps = 3;
+
+        function showStep(step) {
+            // Hide all steps
+            document.querySelectorAll(".form-step").forEach((s) => s.classList.remove("active"));
+            document.querySelectorAll(".step").forEach((s) => s.classList.remove("active"));
+
+            // Show current step
+            document.querySelector(`[data-step="${step}"]`).classList.add("active");
+            document.querySelector(`.form-step[data-step="${step}"]`).classList.add("active");
+
+            // Update navigation buttons
+            const prevBtn = document.querySelector(".prev-btn");
+            const nextBtn = document.querySelector(".next-btn");
+            const submitBtn = document.querySelector(".submit-btn");
+
+            prevBtn.style.display = step === 1 ? "none" : "inline-block";
+            nextBtn.style.display = step === totalSteps ? "none" : "inline-block";
+            submitBtn.style.display = step === totalSteps ? "inline-block" : "none";
+        }
+
+        function validateStep(step) {
+            const currentStepElement = document.querySelector(`.form-step[data-step="${step}"]`);
+            const requiredFields = currentStepElement.querySelectorAll("[required]");
+            let isValid = true;
+
+            requiredFields.forEach((field) => {
+                if (!field.value.trim()) {
+                    field.style.borderColor = "#e74c3c";
+                    isValid = false;
+                } else {
+                    field.style.borderColor = "#ddd";
+                }
+            });
+
+            return isValid;
+        }
+
+        function nextStep() {
+            if (validateStep(currentAdmissionStep)) {
+                if (currentAdmissionStep < totalSteps) {
+                    currentAdmissionStep++;
+                    showStep(currentAdmissionStep);
+                }
+            } else {
+                alert("Please fill in all required fields.");
+            }
+        }
+
+        function prevStep() {
+            if (currentAdmissionStep > 1) {
+                currentAdmissionStep--;
+                showStep(currentAdmissionStep);
+            }
+        }
+
+        // ===== CHATBOT FUNCTIONALITY =====
+        const chatbot = document.getElementById("chatbot");
+        const chatbotMessages = document.getElementById("chatbotMessages");
+        const chatbotInput = document.getElementById("chatbotInput");
+
+        function toggleChatbot() {
+            chatbot.classList.toggle("active");
+        }
+
+        function sendMessage() {
+            const message = chatbotInput.value.trim();
+            if (!message) return;
+
+            // Add user message
+            addMessage(message, "user");
+            chatbotInput.value = "";
+
+            // Simulate bot response
+            setTimeout(() => {
+                const response = getBotResponse(message);
+                addMessage(response, "bot");
+            }, 1000);
+        }
+
+        function addMessage(text, sender) {
+            const messageDiv = document.createElement("div");
+            messageDiv.className = `message ${sender}-message`;
+            messageDiv.innerHTML = `<p>${text}</p>`;
+            chatbotMessages.appendChild(messageDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+
+        function getBotResponse(message) {
+            const responses = {
+                hello: "Hello! Welcome to T&T Junior School. How can I help you today?",
+                admissions: "Our admissions are open year-round. You can apply through our online form or visit our campus.",
+                fees: "Our fees range from UGX 150,000 to UGX 250,000 per term depending on the grade level.",
+                contact: "You can reach us at +256 752 783883 or email info@tandtjuniorschools.com",
+                location: "We are located on Nakawuka Road, Kasenge, Uganda.",
+                programs: "We offer Nursery, Pre-Primary, and Primary education (P1-P7) with excellent facilities.",
+                default: "Thank you for your question. For detailed information, please contact our admissions office at +256 752 783883.",
+            };
+
+            const lowerMessage = message.toLowerCase();
+
+            for (const [key, response] of Object.entries(responses)) {
+                if (lowerMessage.includes(key)) {
+                    return response;
+                }
+            }
+
+            return responses.default;
+        }
+
+        // Enter key for chatbot
+        chatbotInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+                sendMessage();
+            }
+        });
+
+        // ===== BACK TO TOP BUTTON =====
+        const backToTop = document.getElementById("backToTop");
+
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add("visible");
+            } else {
+                backToTop.classList.remove("visible");
+            }
+        });
+
+        backToTop.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+            });
+        });
+
+        // ===== INTERSECTION OBSERVER FOR ANIMATIONS =====
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px",
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+
+                    // Trigger counter animation for metrics section
+                    if (entry.target.classList.contains("metrics-bar")) {
+                        animateCounters();
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll(".testimonial-card, .news-card, .gallery-item, .metrics-bar").forEach((el) => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(30px)";
+            el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+            observer.observe(el);
+        });
+
+        // ===== FORM SUBMISSIONS =====
+        document.querySelectorAll("form").forEach((form) => {
+            form.addEventListener("submit", function (e) {
+                e.preventDefault();
+
+                // Add loading state
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalText = submitBtn.textContent;
+                submitBtn.innerHTML = '<span class="spinner"></span>Sending...';
+                submitBtn.disabled = true;
+
+                // Simulate form submission
+                setTimeout(() => {
+                    alert("Thank you! Your message has been sent successfully.");
+                    this.reset();
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+
+                    // Reset wizard if it's the admission form
+                    if (this.id === "admissionForm") {
+                        currentAdmissionStep = 1;
+                        showStep(currentAdmissionStep);
+                    }
+                }, 2000);
+            });
+        });
+
+        // ===== GALLERY MODAL =====
+        function openGalleryModal(imageSrc) {
+            const modal = document.createElement("div");
+            modal.className = "gallery-modal";
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.9);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 10000;
+                cursor: pointer;
+            `;
+
+            modal.innerHTML = `
+                <div style="position: relative; max-width: 90%; max-height: 90%;">
+                    <img src="${imageSrc}" alt="Gallery Image" style="width: 100%; height: auto; border-radius: 10px;">
+                    <button onclick="closeGalleryModal()" style="
+                        position: absolute;
+                        top: -10px;
+                        right: -10px;
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 50%;
+                        border: none;
+                        background: #fdb82c;
+                        color: white;
+                        font-size: 1.2rem;
+                        cursor: pointer;
+                    ">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            `;
+
+            document.body.appendChild(modal);
+            document.body.style.overflow = "hidden";
+
+            // Close on background click
+            modal.addEventListener("click", (e) => {
+                if (e.target === modal) {
+                    closeGalleryModal();
+                }
+            });
+        }
+
+        function closeGalleryModal() {
+            const modal = document.querySelector(".gallery-modal");
+            if (modal) {
+                modal.remove();
+                document.body.style.overflow = "auto";
+            }
+        }
+
+        // Add click events to gallery items
+        document.querySelectorAll(".gallery-item img").forEach((img) => {
+            img.addEventListener("click", () => {
+                openGalleryModal(img.src);
+            });
+        });
+
+        // ===== PWA INSTALLATION =====
+        let deferredPrompt;
+
+        window.addEventListener("beforeinstallprompt", (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+
+            // Show install button
+            const installBtn = document.createElement("button");
+            installBtn.textContent = "Install App";
+            installBtn.className = "install-btn btn btn-primary";
+            installBtn.style.cssText = `
+                position: fixed;
+                bottom: 100px;
+                left: 20px;
+                z-index: 1000;
+            `;
+
+            installBtn.addEventListener("click", () => {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === "accepted") {
+                        console.log("User accepted the install prompt");
+                    }
+                    deferredPrompt = null;
+                    installBtn.remove();
+                });
+            });
+
+            document.body.appendChild(installBtn);
+        });
+
+        // ===== SERVICE WORKER REGISTRATION =====
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker
+                    .register("service-worker.js")
+                    .then((registration) => {
+                        console.log("SW registered: ", registration);
+                    })
+                    .catch((registrationError) => {
+                        console.log("SW registration failed: ", registrationError);
+                    });
+            });
+        }
+
+        // ===== LAZY LOADING FOR IMAGES =====
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.classList.remove("lazy");
+                        imageObserver.unobserve(img);
+                    }
+                }
+            });
+        });
+
+        document.querySelectorAll("img[data-src]").forEach((img) => {
+            imageObserver.observe(img);
+        });
+
+        // ===== INITIALIZATION =====
+        document.addEventListener("DOMContentLoaded", () => {
+            // Initialize first step of wizard
+            showStep(1);
+
+            // Show first hero slide
+            showHeroSlide(0);
+
+            // Start hero slider
+            startHeroSlider();
+
+            // Auto-update copyright year
+            const currentYear = new Date().getFullYear();
+            const yearElement = document.getElementById("currentYear");
+            if (yearElement) {
+                yearElement.textContent = currentYear;
+            }
+
+            // Initialize AOS if available
+            if (typeof AOS !== "undefined" && typeof AOS.init === "function") {
+                AOS.init({
+                    duration: 800,
+                    once: true,
+                });
+            }
+        });
+
+        // ===== ERROR HANDLING =====
+        window.addEventListener("error", (e) => {
+            console.error("JavaScript error:", e.error);
+        });
+
+        // ===== PERFORMANCE OPTIMIZATION =====
+        // Debounce scroll events
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Apply debouncing to scroll events
+        const debouncedScrollHandler = debounce(() => {
+            // Scroll-based functionality here
+        }, 10);
+
+        window.addEventListener("scroll", debouncedScrollHandler);
+    </script>
+</body>
+
+</html>
